@@ -1,7 +1,35 @@
 import React from "react";
-import ProductItem from "./ProductItem";
+// import ProductItem from "./ProductItem";
 
 export default function CartModal(props) {
+  let {cartArray}  = props;
+  const renderModal = (cartArray) => {
+    return cartArray.map((item, index) => {
+      return (
+        <tr key={item.id}>
+          <th scope="row">{item.id}</th>
+          <td>{item.name}</td>
+          <td>
+            <img
+              src={item.img}
+              style={{width: "80px", height: "80px"}}
+              alt={item.name}
+            />
+          </td>
+          <td>
+            <button onClick={()=>{props.handleQuantity(item.id, "dec")}}>-</button>
+            <span style={{margin: "0 5px"}}>{item.quantity}</span>
+            <button onClick={()=>{props.handleQuantity(item.id, "inc")}}>+</button>
+          </td>
+          <td> {item.price}</td>
+          <td> {(item.price * item.quantity).toLocaleString()}</td>
+          <button type="button" onClick={()=>{props.removeProduct(item.id)}}>
+            Delete
+          </button>
+        </tr>
+      );
+    });
+  }
   return (
     <div>
       <div>
@@ -40,24 +68,7 @@ export default function CartModal(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Name</td>
-                      <td>
-                        <img
-                          src="./img/vsphone.jpg"
-                          style={{width: "80px", height: "80px"}}
-                        />
-                      </td>
-                      <td>
-                        <button>-</button>
-                        <span style={{margin: "0 5px"}}>1</span>
-                        <button>+</button>
-                      </td>
-                      <td> 600</td>
-                      <td> 600</td>
-                      <button type="button">Delete</button>
-                    </tr>
+                    {renderModal(cartArray)}
                   </tbody>
                 </table>
               </div>
@@ -80,4 +91,3 @@ export default function CartModal(props) {
     </div>
   );
 }
-//

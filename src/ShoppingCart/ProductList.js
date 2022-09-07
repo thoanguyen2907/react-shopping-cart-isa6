@@ -41,11 +41,12 @@ export default function ProductList(props) {
       img: "./img/applephone.jpg",
     },
   ];
+  // console.log("add product", props.addProduct);
   const renderProduct = (arrayProduct) => {
     return arrayProduct.map((product, index) => {
       return (
-        <div className="col-4" key={index}>
-          <ProductItem />
+        <div className="col-4" key={product.id}>
+          <ProductItem product={product} addProduct={props.addProduct} />
         </div>
       );
     });
@@ -55,15 +56,7 @@ export default function ProductList(props) {
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-4">
-            <ProductItem />
-          </div>
-          <div className="col-4">
-            <ProductItem />
-          </div>
-          <div className="col-4">
-            <ProductItem />
-          </div>
+          {renderProduct(arrayProduct)}
         </div>
       </div>
     </div>
