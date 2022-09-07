@@ -45,10 +45,7 @@ export default function ProductList(props) {
     return arrayProduct.map((product, index) => {
       return (
         <div className="col-4" key={index}>
-          <ProductItem
-            productProps={product}
-            addProductProps={props.addProductProps}
-          />
+          <ProductItem />
         </div>
       );
     });
@@ -57,7 +54,17 @@ export default function ProductList(props) {
   return (
     <div>
       <div className="container">
-        <div className="row">{renderProduct(arrayProduct)}</div>
+        <div className="row">
+          <div className="col-4">
+            <ProductItem />
+          </div>
+          <div className="col-4">
+            <ProductItem />
+          </div>
+          <div className="col-4">
+            <ProductItem />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,34 +2,6 @@ import React from "react";
 import ProductItem from "./ProductItem";
 
 export default function CartModal(props) {
-  let {cartArrayProps} = props;
-  //try to   console.log("cartArrayProps", cartArrayProps);
-  //console.log("cartArrayProps", cartArrayProps);
-  const renderCartItem = (cartArrayProps) => {
-    return cartArrayProps.map((cartItem, index) => {
-      //console.log the cartItem also to see when mapping what it returns
-      return (
-        <tr key={index}>
-          <th scope="row">{cartItem.id}</th>
-          <td>{cartItem.name}</td>
-          <td>
-            <img src={cartItem.img} style={{width: "80px", height: "80px"}} />
-          </td>
-          <td> {cartItem.quantity}</td>
-          <td> {cartItem.price}</td>
-          <td> {(cartItem.price * cartItem.quantity).toLocaleString()}</td>
-          <button
-            type="button"
-            onClick={() => {
-              props.removeProduct(cartItem.id);
-            }}
-          >
-            Delete
-          </button>
-        </tr>
-      );
-    });
-  };
   return (
     <div>
       <div>
@@ -43,7 +15,7 @@ export default function CartModal(props) {
           aria-hidden="true"
         >
           <div className="modal-dialog" role="document">
-            <div className="modal-content">
+            <div className="modal-content" style={{width: "120%"}}>
               <div className="modal-header">
                 <h5 className="modal-title">Modal title</h5>
                 <button
@@ -67,7 +39,26 @@ export default function CartModal(props) {
                       <th scope="col">Total</th>
                     </tr>
                   </thead>
-                  <tbody>{renderCartItem(cartArrayProps)}</tbody>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Name</td>
+                      <td>
+                        <img
+                          src="./img/vsphone.jpg"
+                          style={{width: "80px", height: "80px"}}
+                        />
+                      </td>
+                      <td>
+                        <button>-</button>
+                        <span style={{margin: "0 5px"}}>1</span>
+                        <button>+</button>
+                      </td>
+                      <td> 600</td>
+                      <td> 600</td>
+                      <button type="button">Delete</button>
+                    </tr>
+                  </tbody>
                 </table>
               </div>
               <div className="modal-footer">
