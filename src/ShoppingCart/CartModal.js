@@ -17,15 +17,15 @@ export default function CartModal(props) {
             />
           </td>
           <td>
-            <button onClick={()=>{props.handleQuantity(item.id, "dec")}}>-</button>
-            <span style={{margin: "0 5px"}}>{item.quantity}</span>
-            <button onClick={()=>{props.handleQuantity(item.id, "inc")}}>+</button>
+           <span onClick={()=>{props.handleQuantity(item.id, "dec")}}>-</span>
+           <span style={{margin: "0 5px"}}>{item.quantity}</span>
+           <span onClick={()=>{props.handleQuantity(item.id, "inc")}}>+</span>
           </td>
           <td> {item.price}</td>
           <td> {(item.price * item.quantity).toLocaleString()}</td>
-          <button type="button" onClick={()=>{props.removeProduct(item.id)}}>
+          <span type="button" onClick={()=>{props.removeProduct(item.id)}}>
             Delete
-          </button>
+          </span>
         </tr>
       );
     });

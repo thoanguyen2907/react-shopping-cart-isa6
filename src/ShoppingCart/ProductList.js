@@ -42,15 +42,15 @@ export default function ProductList(props) {
     },
   ];
   // console.log("add product", props.addProduct);
-  const renderProduct = (arrayProduct) => {
-    return arrayProduct.map((product, index) => {
+  const renderProduct = (arrayProduct) => (
+     arrayProduct.map((product) => {
       return (
         <div className="col-4" key={product.id}>
           <ProductItem product={product} addProduct={props.addProduct} />
         </div>
       );
-    });
-  };
+    })
+  );
 
   return (
     <div>
